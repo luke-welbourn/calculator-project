@@ -1,34 +1,7 @@
-* {
-  background-color: #22252d;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: white;
-}
+@use "./variables";
 
-.light {
-  display: flex;
-  justify-content: center;
-  border: 2px solid rgb(60, 212, 60);
-  width: 100vw;
-  height: 10vh;
-  padding-top: 30px;
-}
+@use "./light";
 
-.screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid white;
-  height: 30vh;
-  width: 100vw;
-}
+@use "./screen";
 
-.input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid rgb(199, 43, 165);
-  width: 100vw;
-  height: 60vh;
-}
+@use "./input";
