@@ -1,8 +1,31 @@
 .light {
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 2px solid rgb(60, 212, 60);
   width: 100vw;
   height: 10vh;
-  padding-top: 30px;
+
+  .light__button {
+    width: 10vw;
+    height: auto;
+    background-color: rgb(196, 199, 202);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-height: 5vh;
+      max-width: 5vh;
+      background-color: rgb(196, 199, 202);
+    }
+  }
+
+  .light__bright {
+    border-radius: 5px 0px 0px 5px;
+  }
+
+  .light__dark {
+    border-radius: 0px 5px 5px 0px;
+  }
 }

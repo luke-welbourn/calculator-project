@@ -1,8 +1,29 @@
 .input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 30px;
+  padding: 20px;
   border: 2px solid rgb(199, 43, 165);
   width: 100vw;
   height: 60vh;
+  background-color: #292d36;
+
+  .input__buttonContainer {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    background-color: #272b33;
+
+    .input__button {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      border: 0px;
+    }
+
+    .input__button:hover {
+      background-color: #414449;
+    }
+  }
 }
