@@ -1,7 +1,58 @@
+$dark-primary: #22252d;
+$dark-brighter: #292d36;
+$near-white: #f9f9f9;
+$dark-button: #272b33;
+$grey: rgb(224, 224, 224);
+$dark-grey: rgb(219, 216, 216);
+
 * {
-  background-color: #22252d;
+  background-color: $dark-primary;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
+  color: $near-white;
+}
+
+.light-mode {
+  * {
+    background-color: $near-white;
+  }
+
+  .input {
+    background-color: $grey;
+
+    .input_buttonContainer {
+      background-color: $dark-grey;
+      box-shadow: 0 0 0 2px $dark-grey;
+    }
+
+    .input__button {
+      background-color: $dark-grey;
+      box-shadow: 0 0 0 2px $dark-grey;
+      color: black;
+    }
+  }
+
+  .light {
+    background-color: $near-white;
+
+    .light__button {
+      img {
+        filter: none;
+      }
+    }
+  }
+
+  .screen {
+    background-color: $near-white;
+  }
+
+  .screen__sum {
+    color: black;
+    background-color: $near-white;
+  }
+  .screen__display {
+    color: black;
+    background-color: $near-white;
+  }
 }

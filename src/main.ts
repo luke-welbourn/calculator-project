@@ -2,8 +2,16 @@ import "./style.scss";
 
 const buttons = document.querySelectorAll<HTMLButtonElement>(`.input__button`);
 
-if (!buttons) {
-  throw new Error(`issue with button selector`);
+const screen = document.querySelector<HTMLElement>(`.screen__display`);
+
+const lightBright = document.querySelector<HTMLElement>(`.light__bright`);
+
+const lightDark = document.querySelector<HTMLElement>(`.light__dark`);
+
+const everything = document.querySelector<HTMLElement>(`body`);
+
+if (!buttons || !screen || !lightBright || !lightDark || !everything) {
+  throw new Error(`issue with a query selector`);
 }
 
 buttons.forEach((button) => {
@@ -11,65 +19,75 @@ buttons.forEach((button) => {
     const value = button.dataset.value;
 
     if (value == "ac") {
-      // code to handle input
+      screen.innerText = `AC`;
       console.log(`${value} was clicked`);
     } else if (value === "+-") {
-      // code to handle input
+      screen.innerText = `+-`;
       console.log(`${value} was clicked`);
     } else if (value === "%") {
-      // code to handle input
+      screen.innerText = `%`;
       console.log(`${value} was clicked`);
     } else if (value === "/") {
-      // code to handle input
+      screen.innerText = `/`;
       console.log(`${value} was clicked`);
     } else if (value === "7") {
-      // code to handle input
+      screen.innerText = `7`;
       console.log(`${value} was clicked`);
     } else if (value === "8") {
-      // code to handle input
+      screen.innerText = `8`;
       console.log(`${value} was clicked`);
     } else if (value === "9") {
-      // code to handle input
+      screen.innerText = `9`;
       console.log(`${value} was clicked`);
     } else if (value === "x") {
-      // code to handle input
+      screen.innerText = `X`;
       console.log(`${value} was clicked`);
     } else if (value === "4") {
-      // code to handle input
+      screen.innerText = `4`;
       console.log(`${value} was clicked`);
     } else if (value === "5") {
-      // code to handle input
+      screen.innerText = `5`;
       console.log(`${value} was clicked`);
     } else if (value === "6") {
-      // code to handle input
+      screen.innerText = `6`;
       console.log(`${value} was clicked`);
     } else if (value === "-") {
-      // code to handle input
+      screen.innerText = `-`;
       console.log(`${value} was clicked`);
     } else if (value === "1") {
-      // code to handle input
+      screen.innerText = `1`;
       console.log(`${value} was clicked`);
     } else if (value === "2") {
-      // code to handle input
+      screen.innerText = `2`;
       console.log(`${value} was clicked`);
     } else if (value === "3") {
-      // code to handle input
+      screen.innerText = `3`;
       console.log(`${value} was clicked`);
     } else if (value === "+") {
-      // code to handle input
+      screen.innerText = `+`;
       console.log(`${value} was clicked`);
     } else if (value === "reverse") {
-      // code to handle input
+      screen.innerText = `undo`;
       console.log(`${value} was clicked`);
     } else if (value === "0") {
-      // code to handle input
+      screen.innerText = `0`;
       console.log(`${value} was clicked`);
     } else if (value === ".") {
-      // code to handle input
+      screen.innerText = `.`;
       console.log(`${value} was clicked`);
     } else if (value === "=") {
-      // code to handle input
+      screen.innerText = `=`;
       console.log(`${value} was clicked`);
     } else console.log("error");
   });
+});
+
+lightBright.addEventListener(`click`, () => {
+  everything.classList.add(`light-mode`);
+  everything.classList.remove(`dark-mode`);
+});
+
+lightDark.addEventListener(`click`, () => {
+  everything.classList.add(`dark-mode`);
+  everything.classList.remove(`light-mode`);
 });

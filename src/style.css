@@ -3,7 +3,40 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
+  color: #f9f9f9;
+}
+
+.light-mode * {
+  background-color: #f9f9f9;
+}
+.light-mode .input {
+  background-color: rgb(224, 224, 224);
+}
+.light-mode .input .input_buttonContainer {
+  background-color: rgb(219, 216, 216);
+  box-shadow: 0 0 0 2px rgb(219, 216, 216);
+}
+.light-mode .input .input__button {
+  background-color: rgb(219, 216, 216);
+  box-shadow: 0 0 0 2px rgb(219, 216, 216);
+  color: black;
+}
+.light-mode .light {
+  background-color: #f9f9f9;
+}
+.light-mode .light .light__button img {
+  filter: none;
+}
+.light-mode .screen {
+  background-color: #f9f9f9;
+}
+.light-mode .screen__sum {
+  color: black;
+  background-color: #f9f9f9;
+}
+.light-mode .screen__display {
+  color: black;
+  background-color: #f9f9f9;
 }
 
 .light {
@@ -25,12 +58,13 @@
   max-height: 5vh;
   max-width: 5vh;
   background-color: transparent;
+  filter: brightness(0) invert(1);
 }
 .light .light__bright {
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 10px 0px 0px 10px;
 }
 .light .light__dark {
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .light__button:hover {
@@ -40,16 +74,19 @@
 
 .screen {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
   height: 30vh;
   width: 100vw;
-  border: 1px solid white;
 }
 .screen .screen__display {
-  padding: 40px;
-  padding-bottom: 0;
   font-size: 2em;
+  padding-right: 30px;
+}
+.screen .screen__sum {
+  padding-right: 30px;
+  font-size: 1.3em;
 }
 
 .input {
@@ -61,6 +98,7 @@
   width: 100vw;
   height: 60vh;
   background-color: #292d36;
+  border-radius: 30px 30px 0px 0px;
 }
 .input .input__buttonContainer {
   width: auto;
@@ -69,6 +107,8 @@
   background-color: #272b33;
 }
 .input .input__buttonContainer .input__button {
+  font-size: 1.3em;
+  font-weight: bold;
   width: 100%;
   height: 100%;
   border-radius: 10px;

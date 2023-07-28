@@ -17,15 +17,16 @@
       max-height: 5vh;
       max-width: 5vh;
       background-color: transparent;
+      filter: brightness(0) invert(1);
     }
   }
 
   .light__bright {
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 10px 0px 0px 10px;
   }
 
   .light__dark {
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 10px 10px 0px;
   }
 }
 
