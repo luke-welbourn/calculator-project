@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
 $dark-primary: #22252d;
 $dark-brighter: #292d36;
 $near-white: #f9f9f9;
@@ -11,6 +13,7 @@ $dark-grey: rgb(219, 216, 216);
   padding: 0;
   box-sizing: border-box;
   color: $near-white;
+  font-family: "Rubik", sans-serif;
 }
 
 .light-mode {
@@ -21,9 +24,12 @@ $dark-grey: rgb(219, 216, 216);
   .input {
     background-color: $grey;
 
-    .input_buttonContainer {
-      background-color: $dark-grey;
-      box-shadow: 0 0 0 2px $dark-grey;
+    .input__buttonContainer {
+      .input__button:hover {
+        background-color: #bdbdbd;
+        box-shadow: 0 0 0 2px #bdbdbd;
+        transition: all 0.5s ease;
+      }
     }
 
     .input__button {

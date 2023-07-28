@@ -3,7 +3,7 @@ $dark-brighter: #292d36;
 $near-white: #f9f9f9;
 $dark-button: #272b33;
 $grey: rgb(241, 241, 241);
-$dark-grey: rgb(219, 216, 216);
+$dark-grey: rgb(204, 202, 202);
 
 .input {
   display: grid;
@@ -33,7 +33,7 @@ $dark-grey: rgb(219, 216, 216);
 
     .input__button:hover {
       background-color: #414449;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.5s ease;
     }
   }
 }

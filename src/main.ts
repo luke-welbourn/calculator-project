@@ -10,9 +10,39 @@ const lightDark = document.querySelector<HTMLElement>(`.light__dark`);
 
 const everything = document.querySelector<HTMLElement>(`body`);
 
-if (!buttons || !screen || !lightBright || !lightDark || !everything) {
+const sumHistoryDisplay = document.querySelector<HTMLElement>(`.screen__sum`);
+
+const sumHistory: string[] = [];
+
+if (
+  !buttons ||
+  !screen ||
+  !lightBright ||
+  !lightDark ||
+  !everything ||
+  !sumHistoryDisplay
+) {
   throw new Error(`issue with a query selector`);
 }
+//
+//
+//
+//
+
+const updateDisplay = (value: string) => {
+  sumHistory.push(value);
+  sumHistoryDisplay.innerText = sumHistory.join("  ");
+};
+
+const clearDisplay = () => {
+  sumHistory.length = 0;
+  sumHistoryDisplay.innerText = "";
+};
+
+//
+//
+//
+//
 
 buttons.forEach((button) => {
   button.addEventListener(`click`, () => {
@@ -20,65 +50,64 @@ buttons.forEach((button) => {
 
     if (value == "ac") {
       screen.innerText = `AC`;
-      console.log(`${value} was clicked`);
+      clearDisplay();
     } else if (value === "+-") {
       screen.innerText = `+-`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "%") {
       screen.innerText = `%`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "/") {
       screen.innerText = `/`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "7") {
       screen.innerText = `7`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "8") {
       screen.innerText = `8`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "9") {
       screen.innerText = `9`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "x") {
       screen.innerText = `X`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "4") {
       screen.innerText = `4`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "5") {
       screen.innerText = `5`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "6") {
       screen.innerText = `6`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "-") {
       screen.innerText = `-`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "1") {
       screen.innerText = `1`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "2") {
       screen.innerText = `2`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "3") {
       screen.innerText = `3`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "+") {
       screen.innerText = `+`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "reverse") {
       screen.innerText = `undo`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === "0") {
       screen.innerText = `0`;
-      console.log(`${value} was clicked`);
+      updateDisplay(value);
     } else if (value === ".") {
       screen.innerText = `.`;
-      console.log(`${value} was clicked`);
     } else if (value === "=") {
       screen.innerText = `=`;
-      console.log(`${value} was clicked`);
-    } else console.log("error");
+      updateDisplay(value);
+    } else alert("error");
   });
 });
 
