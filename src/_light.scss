@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid rgb(60, 212, 60);
   width: 100vw;
   height: 10vh;
 
@@ -17,7 +16,7 @@
     img {
       max-height: 5vh;
       max-width: 5vh;
-      background-color: rgb(196, 199, 202);
+      background-color: transparent;
     }
   }
 
@@ -28,4 +27,9 @@
   .light__dark {
     border-radius: 0px 5px 5px 0px;
   }
+}
+
+.light__button:hover {
+  background-color: #414449;
+  transition: background-color 0.3s ease;
 }

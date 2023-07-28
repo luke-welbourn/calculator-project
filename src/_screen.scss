@@ -1,8 +1,14 @@
 .screen {
   display: flex;
-  justify-content: center;
+  flex-direction: row-reverse;
   align-items: center;
-  border: 2px solid white;
   height: 30vh;
   width: 100vw;
+  border: 1px solid white;
+
+  .screen__display {
+    padding: 40px;
+    padding-bottom: 0;
+    font-size: 2em;
+  }
 }

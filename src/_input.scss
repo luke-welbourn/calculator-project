@@ -4,7 +4,6 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 30px;
   padding: 20px;
-  border: 2px solid rgb(199, 43, 165);
   width: 100vw;
   height: 60vh;
   background-color: #292d36;
@@ -24,6 +23,7 @@
 
     .input__button:hover {
       background-color: #414449;
+      transition: background-color 0.3s ease;
     }
   }
 }

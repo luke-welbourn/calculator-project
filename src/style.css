@@ -10,7 +10,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid rgb(60, 212, 60);
   width: 100vw;
   height: 10vh;
 }
@@ -25,7 +24,7 @@
 .light .light__button img {
   max-height: 5vh;
   max-width: 5vh;
-  background-color: rgb(196, 199, 202);
+  background-color: transparent;
 }
 .light .light__bright {
   border-radius: 5px 0px 0px 5px;
@@ -34,13 +33,23 @@
   border-radius: 0px 5px 5px 0px;
 }
 
+.light__button:hover {
+  background-color: #414449;
+  transition: background-color 0.3s ease;
+}
+
 .screen {
   display: flex;
-  justify-content: center;
+  flex-direction: row-reverse;
   align-items: center;
-  border: 2px solid white;
   height: 30vh;
   width: 100vw;
+  border: 1px solid white;
+}
+.screen .screen__display {
+  padding: 40px;
+  padding-bottom: 0;
+  font-size: 2em;
 }
 
 .input {
@@ -49,7 +58,6 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 30px;
   padding: 20px;
-  border: 2px solid rgb(199, 43, 165);
   width: 100vw;
   height: 60vh;
   background-color: #292d36;
@@ -68,4 +76,5 @@
 }
 .input .input__buttonContainer .input__button:hover {
   background-color: #414449;
+  transition: background-color 0.3s ease;
 }/*# sourceMappingURL=style.css.map */
