@@ -30,14 +30,74 @@ if (
 //
 
 const updateDisplay = (value: string) => {
-  sumHistory.push(value);
-  sumHistoryDisplay.innerText = sumHistory.join("  ");
+  const lastEntry = sumHistory[sumHistory.length - 1];
+
+  if (lastEntry && lastEntry.includes(".") && !isNaN(Number(value))) {
+    sumHistory[sumHistory.length - 1] += value;
+  } else if (
+    value === "0" ||
+    value === "." ||
+    value === "1" ||
+    value === "2" ||
+    value === "3" ||
+    value === "4" ||
+    value === "5" ||
+    value === "6" ||
+    value === "7" ||
+    value === "8" ||
+    value === "9"
+  ) {
+    if (lastEntry && !isNaN(Number(lastEntry))) {
+      sumHistory[sumHistory.length - 1] += value;
+    } else {
+      sumHistory.push(value);
+    }
+  } else {
+    sumHistory.push(value);
+  }
+
+  sumHistoryDisplay.innerText = sumHistory.join(" ");
 };
 
 const clearDisplay = () => {
   sumHistory.length = 0;
   sumHistoryDisplay.innerText = "";
 };
+
+function calculateSum() {
+  const equationString = sumHistory.join(" ");
+  const operators = equationString.match(/[+\-*/]/g); // Gets all the symbols (array)
+  const numbers = equationString.split(/[+\-*/]/g).map(Number); // Gets all the numbers (array)
+
+  let result = numbers[0];
+
+  if (!operators || !numbers) {
+    throw new Error(`problem with calculate sum array generation`);
+  }
+
+  for (let i = 0; i < operators.length; i++) {
+    const operator = operators[i];
+    const number = numbers[i + 1];
+
+    switch (operator) {
+      case "+":
+        result += number;
+        break;
+      case "-":
+        result -= number;
+        break;
+      case "*":
+        result *= number;
+        break;
+      case "/":
+        result /= number;
+        break;
+      default:
+        break;
+    }
+  }
+  return result;
+}
 
 //
 //
@@ -49,7 +109,7 @@ buttons.forEach((button) => {
     const value = button.dataset.value;
 
     if (value == "ac") {
-      screen.innerText = `AC`;
+      screen.innerText = ``;
       clearDisplay();
     } else if (value === "+-") {
       screen.innerText = `+-`;
@@ -69,8 +129,8 @@ buttons.forEach((button) => {
     } else if (value === "9") {
       screen.innerText = `9`;
       updateDisplay(value);
-    } else if (value === "x") {
-      screen.innerText = `X`;
+    } else if (value === "*") {
+      screen.innerText = `*`;
       updateDisplay(value);
     } else if (value === "4") {
       screen.innerText = `4`;
@@ -104,9 +164,11 @@ buttons.forEach((button) => {
       updateDisplay(value);
     } else if (value === ".") {
       screen.innerText = `.`;
-    } else if (value === "=") {
-      screen.innerText = `=`;
       updateDisplay(value);
+    } else if (value === "=") {
+      const result = calculateSum();
+      screen.innerText = `${result}`;
+      clearDisplay();
     } else alert("error");
   });
 });
