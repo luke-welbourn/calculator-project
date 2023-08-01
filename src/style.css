@@ -8,40 +8,6 @@
   font-family: "Rubik", sans-serif;
 }
 
-.light-mode * {
-  background-color: #f9f9f9;
-}
-.light-mode .input {
-  background-color: rgb(224, 224, 224);
-}
-.light-mode .input .input__buttonContainer .input__button:hover {
-  background-color: #bdbdbd;
-  box-shadow: 0 0 0 2px #bdbdbd;
-  transition: all 0.5s ease;
-}
-.light-mode .input .input__button {
-  background-color: rgb(219, 216, 216);
-  box-shadow: 0 0 0 2px rgb(219, 216, 216);
-  color: black;
-}
-.light-mode .light {
-  background-color: #f9f9f9;
-}
-.light-mode .light .light__button img {
-  filter: none;
-}
-.light-mode .screen {
-  background-color: #f9f9f9;
-}
-.light-mode .screen__sum {
-  color: black;
-  background-color: #f9f9f9;
-}
-.light-mode .screen__display {
-  color: black;
-  background-color: #f9f9f9;
-}
-
 .light {
   display: flex;
   justify-content: center;
@@ -62,6 +28,10 @@
   max-width: 5vh;
   background-color: transparent;
   filter: brightness(0) invert(1);
+}
+.light .light__button .light__darkImage {
+  padding-top: 9px;
+  padding-bottom: 9px;
 }
 .light .light__bright {
   border-radius: 10px 0px 0px 10px;
@@ -119,7 +89,47 @@
   border-radius: 10px;
   border: 0px;
 }
+.input .input__buttonContainer .input__button.green {
+  color: #26dcbd;
+}
+.input .input__buttonContainer .input__button.red {
+  color: #ec6666;
+}
 .input .input__buttonContainer .input__button:hover {
   background-color: #414449;
   transition: background-color 0.5s ease;
+}
+
+.light-mode * {
+  background-color: #f9f9f9;
+}
+.light-mode .input {
+  background-color: rgb(224, 224, 224);
+}
+.light-mode .input .input__buttonContainer .input__button:hover {
+  background-color: #bdbdbd;
+  box-shadow: 0 0 0 2px #bdbdbd;
+  transition: all 0.5s ease;
+}
+.light-mode .input .input__button {
+  background-color: rgb(219, 216, 216);
+  box-shadow: 0 0 0 2px rgb(219, 216, 216);
+  color: black;
+}
+.light-mode .light {
+  background-color: #f9f9f9;
+}
+.light-mode .light .light__button img {
+  filter: none;
+}
+.light-mode .screen {
+  background-color: #f9f9f9;
+}
+.light-mode .screen__sum {
+  color: black;
+  background-color: #f9f9f9;
+}
+.light-mode .screen__display {
+  color: black;
+  background-color: #f9f9f9;
 }/*# sourceMappingURL=style.css.map */

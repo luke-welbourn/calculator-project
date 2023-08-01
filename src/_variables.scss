@@ -16,49 +16,8 @@ $dark-grey: rgb(219, 216, 216);
   font-family: "Rubik", sans-serif;
 }
 
-.light-mode {
-  * {
-    background-color: $near-white;
-  }
-
-  .input {
-    background-color: $grey;
-
-    .input__buttonContainer {
-      .input__button:hover {
-        background-color: #bdbdbd;
-        box-shadow: 0 0 0 2px #bdbdbd;
-        transition: all 0.5s ease;
-      }
-    }
-
-    .input__button {
-      background-color: $dark-grey;
-      box-shadow: 0 0 0 2px $dark-grey;
-      color: black;
-    }
-  }
-
-  .light {
-    background-color: $near-white;
-
-    .light__button {
-      img {
-        filter: none;
-      }
-    }
-  }
-
-  .screen {
-    background-color: $near-white;
-  }
-
-  .screen__sum {
-    color: black;
-    background-color: $near-white;
-  }
-  .screen__display {
-    color: black;
-    background-color: $near-white;
-  }
-}
+// .input__button {
+//   &.large {
+//     font-size: 1.5em;
+//   }
+// }
