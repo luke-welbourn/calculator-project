@@ -65,7 +65,7 @@ const clearDisplay = () => {
   currentNumber = "";
 };
 
-function calculateSum() {
+function doSum() {
   const equationString = sumHistory.join(" ");
   const operators = equationString.match(/[+\-*/]/g); // Gets all the symbols (array)
   const numbers = equationString.split(/[+\-*/]/g).map(Number); // Gets all the numbers (array)
@@ -185,9 +185,12 @@ buttons.forEach((button) => {
       showOnScreen(value);
       updateDisplay(value);
     } else if (value === "=") {
-      const result = calculateSum();
+      const result = doSum();
       screen.innerText = `${result}`;
-      clearDisplay();
+      sumHistory.length = 0;
+      sumHistoryDisplay.innerText = `${result}`;
+      sumHistory.push(`${result}`);
+      currentNumber = "";
     } else alert("error");
   });
 });
