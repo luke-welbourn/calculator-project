@@ -1,5 +1,7 @@
 import "./style.scss";
 
+import { lightMode } from "./_lightMode";
+
 const buttons = document.querySelectorAll<HTMLButtonElement>(`.input__button`);
 
 const screen = document.querySelector<HTMLElement>(`.screen__display`);
@@ -13,6 +15,8 @@ const everything = document.querySelector<HTMLElement>(`body`);
 const sumHistoryDisplay = document.querySelector<HTMLElement>(`.screen__sum`);
 
 const sumHistory: string[] = [];
+
+let currentNumber = "";
 
 if (
   !buttons ||
@@ -28,12 +32,16 @@ if (
 //
 //
 //
+// update display takes value of a button and updates the sumHistoryDisplay
 
 const updateDisplay = (value: string) => {
   const lastEntry = sumHistory[sumHistory.length - 1];
+  // setting the last entry in sum history so we know it
 
   if (lastEntry && lastEntry.includes(".") && !isNaN(Number(value))) {
     sumHistory[sumHistory.length - 1] += value;
+    // if the last entry is a number with a dot && our input is a number we need to append it to the last value
+    // work to simplify
   } else if (
     value === "0" ||
     value === "." ||
@@ -65,7 +73,12 @@ const clearDisplay = () => {
   currentNumber = "";
 };
 
-function doSum() {
+//
+// doSum takes in no input but rather takes the existing sumHistory currently an array splits it into two arrays, one of number and one of operators
+// it sets a result and uses the two arrays to do the calculation.
+//
+
+const doSum = () => {
   const equationString = sumHistory.join(" ");
   const operators = equationString.match(/[+\-*/]/g); // Gets all the symbols (array)
   const numbers = equationString.split(/[+\-*/]/g).map(Number); // Gets all the numbers (array)
@@ -98,17 +111,16 @@ function doSum() {
     }
   }
   return result;
-}
+};
 
 //
 //
 //
-//
-let currentNumber = "";
+// showOnScreen takes button value, then depending on the value will either append or show it on the main screen.
 
 const showOnScreen = (value: string) => {
   const validOperators = ["+", "-", "*", "/"];
-  const validNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  const validNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
 
   if (value === "." && currentNumber.includes(".")) {
     return;
@@ -117,7 +129,7 @@ const showOnScreen = (value: string) => {
   if (validOperators.includes(value)) {
     screen.innerText = value;
     currentNumber = "";
-  } else if (validNumbers.includes(value) || value === ".") {
+  } else if (validNumbers.includes(value)) {
     currentNumber += value;
     screen.innerText = currentNumber;
   }
@@ -131,59 +143,14 @@ buttons.forEach((button) => {
       screen.innerText = ``;
       clearDisplay();
     } else if (value === "+-") {
-      screen.innerText = `+-`;
-      updateDisplay(value);
+      screen.innerHTML = `&#x1F341;`;
+      updateDisplay(`This feature is currently being developed`);
     } else if (value === "%") {
-      screen.innerText = `%`;
-      updateDisplay(value);
-    } else if (value === "/") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "7") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "8") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "9") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "*") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "4") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "5") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "6") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "-") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "1") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "2") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "3") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === "+") {
-      showOnScreen(value);
-      updateDisplay(value);
+      screen.innerHTML = `&#x1F341;`;
+      updateDisplay(`This feature is currently being developed`);
     } else if (value === "reverse") {
-      screen.innerText = `undo`;
-      updateDisplay(value);
-    } else if (value === "0") {
-      showOnScreen(value);
-      updateDisplay(value);
-    } else if (value === ".") {
-      showOnScreen(value);
-      updateDisplay(value);
+      screen.innerHTML = `&#x1F341;`;
+      updateDisplay(`This feature is currently being developed`);
     } else if (value === "=") {
       const result = doSum();
       screen.innerText = `${result}`;
@@ -191,16 +158,12 @@ buttons.forEach((button) => {
       sumHistoryDisplay.innerText = `${result}`;
       sumHistory.push(`${result}`);
       currentNumber = "";
-    } else alert("error");
+    } else {
+      // covers any number of symbol with no special rule, thank you to Charlie
+      showOnScreen(`${value}`);
+      updateDisplay(`${value}`);
+    }
   });
 });
 
-lightBright.addEventListener(`click`, () => {
-  everything.classList.add(`light-mode`);
-  everything.classList.remove(`dark-mode`);
-});
-
-lightDark.addEventListener(`click`, () => {
-  everything.classList.add(`dark-mode`);
-  everything.classList.remove(`light-mode`);
-});
+lightMode();
