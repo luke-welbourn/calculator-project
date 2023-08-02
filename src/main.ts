@@ -6,28 +6,33 @@ const buttons = document.querySelectorAll<HTMLButtonElement>(`.input__button`);
 
 const screen = document.querySelector<HTMLElement>(`.screen__display`);
 
-const lightBright = document.querySelector<HTMLElement>(`.light__bright`);
-
-const lightDark = document.querySelector<HTMLElement>(`.light__dark`);
-
-const everything = document.querySelector<HTMLElement>(`body`);
-
 const sumHistoryDisplay = document.querySelector<HTMLElement>(`.screen__sum`);
 
 const sumHistory: string[] = [];
 
 let currentNumber = "";
 
-if (
-  !buttons ||
-  !screen ||
-  !lightBright ||
-  !lightDark ||
-  !everything ||
-  !sumHistoryDisplay
-) {
+if (!buttons || !screen || !sumHistoryDisplay) {
   throw new Error(`issue with a query selector`);
 }
+
+const checkForNumber = (value: any) => {
+  if (
+    value === "0" ||
+    value === "." ||
+    value === "1" ||
+    value === "2" ||
+    value === "3" ||
+    value === "4" ||
+    value === "5" ||
+    value === "6" ||
+    value === "7" ||
+    value === "8" ||
+    value === "9"
+  ) {
+    return true;
+  }
+};
 //
 //
 //
@@ -41,20 +46,7 @@ const updateDisplay = (value: string) => {
   if (lastEntry && lastEntry.includes(".") && !isNaN(Number(value))) {
     sumHistory[sumHistory.length - 1] += value;
     // if the last entry is a number with a dot && our input is a number we need to append it to the last value
-    // work to simplify
-  } else if (
-    value === "0" ||
-    value === "." ||
-    value === "1" ||
-    value === "2" ||
-    value === "3" ||
-    value === "4" ||
-    value === "5" ||
-    value === "6" ||
-    value === "7" ||
-    value === "8" ||
-    value === "9"
-  ) {
+  } else if (checkForNumber(value) === true) {
     if (lastEntry && !isNaN(Number(lastEntry))) {
       sumHistory[sumHistory.length - 1] += value;
     } else {
@@ -135,6 +127,8 @@ const showOnScreen = (value: string) => {
   }
 };
 
+// here is a forEachloop that adds event listeners for each button and then runs functions.
+
 buttons.forEach((button) => {
   button.addEventListener(`click`, () => {
     const value = button.dataset.value;
@@ -167,3 +161,10 @@ buttons.forEach((button) => {
 });
 
 lightMode();
+
+// const flip = () => {
+//   const lastEntry = sumHistory[sumHistory.length - 1];
+//   if (!isNaN(Number(lastEntry))) {
+//     lastEntry = lastEntry * -1
+//   }
+// }
