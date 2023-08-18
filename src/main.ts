@@ -11,6 +11,7 @@ const sumHistoryDisplay = document.querySelector<HTMLElement>(`.screen__sum`);
 const sumHistory: string[] = [];
 
 let currentNumber = "";
+//used in main screen input
 
 if (!buttons || !screen || !sumHistoryDisplay) {
   throw new Error(`issue with a query selector`);
@@ -126,6 +127,19 @@ const showOnScreen = (value: string) => {
     screen.innerText = currentNumber;
   }
 };
+//
+// new addition flip handles the -+ button using the sumHistory and then updates both displays and sumhistory
+
+const flip = () => {
+  const lastEntry = sumHistory[sumHistory.length - 1];
+  const lastEntryNumber = parseInt(lastEntry);
+  const flipped = lastEntryNumber * -1;
+  if (!isNaN(Number(lastEntry))) {
+    sumHistory[sumHistory.length - 1] = flipped.toString();
+    sumHistoryDisplay.innerText = sumHistory.join(" ");
+    screen.innerText = flipped.toString();
+  }
+};
 
 // here is a forEachloop that adds event listeners for each button and then runs functions.
 
@@ -137,8 +151,7 @@ buttons.forEach((button) => {
       screen.innerText = ``;
       clearDisplay();
     } else if (value === "+-") {
-      screen.innerHTML = `&#x1F341;`;
-      updateDisplay(`This feature is currently being developed`);
+      flip();
     } else if (value === "%") {
       screen.innerHTML = `&#x1F341;`;
       updateDisplay(`This feature is currently being developed`);
@@ -161,10 +174,3 @@ buttons.forEach((button) => {
 });
 
 lightMode();
-
-// const flip = () => {
-//   const lastEntry = sumHistory[sumHistory.length - 1];
-//   if (!isNaN(Number(lastEntry))) {
-//     lastEntry = lastEntry * -1
-//   }
-// }
